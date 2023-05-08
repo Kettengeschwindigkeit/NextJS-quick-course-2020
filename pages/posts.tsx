@@ -1,9 +1,15 @@
 import { useState, useEffect  } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { NextPageContext } from 'next'
+import { MyPost } from '../interfaces/post'
 import { MainLayout } from '../components/MainLayout'
 
-export default function Posts({ posts: serverPosts }) {
+interface PostPageProps {
+    posts: MyPost[]
+}
+
+export default function Posts({ posts: serverPosts }: PostPageProps) {
     const [posts, setPosts] = useState(serverPosts)
 
     useEffect(() => {
@@ -30,7 +36,6 @@ export default function Posts({ posts: serverPosts }) {
                 <title>Posts Page | Next Course</title>
             </Head>
             <h1>Posts Page</h1>
-            {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
             <ul>
                 {posts.map(post => (
                     <li key={post.id}>
@@ -44,14 +49,14 @@ export default function Posts({ posts: serverPosts }) {
     )
 }
 
-Posts.getInitialProps = async ({ req }) => {
+Posts.getInitialProps = async ({ req }: NextPageContext) => {
 
     if (!req) {
         return { posts: null }
     }
 
     const response = await fetch('http://localhost:4200/posts')
-    const posts = await response.json()
+    const posts: MyPost[] = await response.json()
 
     return {
         posts
