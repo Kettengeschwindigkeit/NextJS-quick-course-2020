@@ -8,7 +8,7 @@ export function MainLayout({ children, title = 'Next App' }) {
         <title>{title} | Next Course</title>
         <meta name='keywords' content='next, nextjs, javascript, react' />
         <meta name='description' content='this is youtube tutorial for next' />
-        <meta charset='utf-8' />
+        <meta charSet='utf-8' />
       </Head>
       <nav>
         <Link href={'/'}><a>Home</a></Link>
