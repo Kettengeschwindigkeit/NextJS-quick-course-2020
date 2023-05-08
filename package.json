@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "serve": "concurrently \"npm run mock\" \"npm run dev\"",
-    "mock": "json-server -w db.json -p 4200 -d 1750"
+    "mock": "json-server -w db.json -p 4300 -d 1750"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "next": "9.4.4",
     "nextjs-progressbar": "^0.0.5",
     "react": "16.13.1",

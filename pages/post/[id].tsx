@@ -64,7 +64,7 @@ interface PostNextPageContext extends NextPageContext {
 // }
 
 export async function getServerSideProps({ query, req }: PostNextPageContext) {
-  const response = await fetch(`http://localhost:4200/posts/${query.id}`)
+  const response = await fetch(`${process.env.API_URL}/posts/${query.id}`)
   const post: MyPost = await response.json()
 
   return {
